@@ -1,3 +1,3 @@
-require 'bookmarkers.rb'
+require './bookmarkers'
 
 run Sinatra::Application
