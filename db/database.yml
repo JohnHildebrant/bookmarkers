@@ -1,0 +1,26 @@
+--- 
+- !ruby/object:Widget 
+  bookmarkers: 
+  - !ruby/object:Bookmarker 
+    note: calebkm.com
+    title: calebkm.com
+    url: calebkm.com
+  - !ruby/object:Bookmarker 
+    note: Testing
+    title: Testing
+    url: testing.com
+  - !ruby/object:Bookmarker 
+    note: The best site ever!
+    title: Last
+    url: last.com
+  - !ruby/object:Bookmarker 
+    note: This one has no title
+    title: notitle.com
+    url: notitle.com
+  name_id: News
+  title: News
+- !ruby/object:Widget 
+  bookmarkers: []
+
+  name_id: Fun
+  title: Fun

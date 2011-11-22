@@ -1,0 +1,32 @@
+%div{ :style => "float:left;clear:both;margin-top:25px;padding:15px;background:blue;" }
+  %form{:action => "/add"}
+    %input{:type => "hidden", :name => "type", :value => "widget"}
+    %input{:type => "text", :name => "title"}
+    %input{:type => "submit", :value => "add widget"}
+
+- #Database.add_widget(Widget.new("First Widget"))
+
+:javascript
+  $(document).ready(function(){
+    $("[title]").tooltip({predelay: "500"})
+  })
+
+- Database.open.each_with_index do |widget, w_index|
+  %div{ :style => "float:left;clear:both;margin-top:5px;padding:15px;background:#eee;" }
+    %div{ :style => "float:right;margin:-10px;" }
+      %a{ :href => "/delete?type=widget&index=#{w_index}", :style => "color:red;text-decoration:none;"}
+        == X
+    %h2{ :style => "margin-top:0;" }= widget.title
+    %form{:action => "/add"}
+      %input{:type => "hidden", :name => "type", :value => "bookmarker"}
+      %input{:type => "hidden", :name => "index", :value => "#{w_index}"}
+      %input{:type => "text", :name => "url", :placeholder => "example.com"}
+      %br
+      %input{:type => "text", :name => "title", :placeholder => "title"}
+      %br
+      %input{:type => "text", :name => "note", :placeholder => "note"}
+      %br
+      %input{:type => "submit", :value => "add url"}
+    %br  
+      - widget.bookmarkers.each_with_index do |bookmark, b_index|
+        = "#{b_index+1}) <a href='http://#{bookmark.url}' target='_blank' title='#{bookmark.note}'>#{bookmark.title}</a> <small><a href='/delete?type=bookmarker&w_index=#{w_index}&b_index=#{b_index}'>x</a></small><br />"

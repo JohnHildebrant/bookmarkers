@@ -1,0 +1,4 @@
+<% if params[:test] %>
+  <% File.open('db/bookmarkers.db', 'a') { |l| l << "\n#{params[:test]}" } %>
+<% end %>
+
