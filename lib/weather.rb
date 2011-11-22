@@ -3,8 +3,8 @@ require 'barometer'
 class Weather
   
   def initialize( city )
-    # @barometer = Barometer.new( city ) rescue nil
-    @barometer = nil
+    @barometer = Barometer.new( city ) rescue nil
+    # @barometer = nil
   end
   
   def forecast
