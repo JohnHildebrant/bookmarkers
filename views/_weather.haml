@@ -1,11 +1,20 @@
-%div{ :style => "float:left;clear:both;margin-top:25px;background:red;color:white;padding:15px;"}    
+%div{ :style => "float:left;clear:both;width:100%;margin-top:25px;background:red;color:white;padding:15px;border-radius:6px;"}    
   %div{ :style => "float:right;margin:-10px;" }
     %a{ :href => "javascript:void(0)", :onclick => "$(this).parent().parent().hide()", :style => "color:white;text-decoration:none;"}
       == <small>hide</small>
-  %h2{ :style => "margin-top:0;" }== Seattle Weather
+  %h2{ :style => "float:left;margin-top:0;margin-bottom:0;" }== Seattle Weather
   - weather = Weather.new("Seattle")
   - if weather.connected?
-    - weather.forecast.each do |day|
-      = "<strong>#{day.date.strftime('%A')}</strong> low: #{day.low}, high: #{day.high}, #{day.icon}<br />"
+    %div{ :style => "float:left;clear:left;margin-left:180px;font-size:60px" }
+      = "#{weather.now.temperature}&deg;"
+    %div{ :style => "float:left;margin-top:-30px;margin-left:50px;" }
+      = weather.now.icon
+    %div{ :style => "float:left;margin-left:50px;font-size:30px;" }
+      = "L: #{weather.today.low}"
+      %br
+      = "H: #{weather.today.high}"
+    %div{ :style => "float:left;clear:both;" }  
+      - weather.forecast.drop(0).each do |day|
+        = "<div style='float:left';><strong>#{day.date.strftime('%A')}</strong><br /> L: #{day.low}&deg;<br />H: #{day.high}&deg;</div><div style='float:left;margin-right:6px;'>#{day.icon}</div>"
   - else
     = weather.forecast
