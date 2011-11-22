@@ -1,20 +1,4 @@
-- require '~/ruby/bookmarkers/models/bookmarker.rb'
-- require '~/ruby/bookmarkers/models/weather.rb'
-- require '~/ruby/bookmarkers/models/widget.rb'
-- require '~/ruby/bookmarkers/models/database.rb'
-
-%div{ :style => "float:left;clear:both;margin-top:25px;background:red;color:white;padding:15px;"}    
-  %div{ :style => "float:right;margin:-10px;" }
-    %a{ :href => "javascript:void(0)", :onclick => "$(this).parent().parent().hide()", :style => "color:white;text-decoration:none;"}
-      == <small>hide</small>
-  %h2{ :style => "margin-top:0;" }== Seattle Weather
-  - weather = Weather.new("Seattle")
-  - if weather.connected?
-    - weather.forecast.each do |day|
-      = "<strong>#{day.date.strftime('%A')}</strong> low: #{day.low}, high: #{day.high}, #{day.icon}<br />"
-  - else
-    = weather.forecast
-      
+= haml :_weather
 = haml :_widget    
     
 

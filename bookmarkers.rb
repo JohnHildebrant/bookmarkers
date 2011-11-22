@@ -1,5 +1,9 @@
 require 'sinatra'
 require 'yaml'
+require './lib/bookmarker'
+require './lib/database'
+require './lib/weather'
+require './lib/widget'
 
 get '/' do
   haml :index, :layout => :template
