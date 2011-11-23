@@ -1,13 +1,13 @@
 class Database
   
-  @db = "db/database.yml"
+  DATABASE_URL = "db/database.yml"
   
   def self.open
-    File.open(@db) { |file| YAML.load(file) }
+    File.open(DATABASE_URL) { |file| YAML.load(file) }
   end
   
   def self.write(array)
-    File.open(@db, 'w') { |file| YAML.dump(array, file) }
+    File.open(DATABASE_URL, 'w') { |file| YAML.dump(array, file) }
   end
   
   def self.[](index)
