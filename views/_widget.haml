@@ -1,23 +1,21 @@
-%div{ :style => "float:left;clear:both;margin-top:25px;padding:15px;background:blue;" }
-  %form{:action => "/add"}
-    %input{:type => "hidden", :name => "type", :value => "widget"}
-    %input{:type => "text", :name => "title"}
-    %input{:type => "submit", :value => "add widget"}
-
 - #Database.add_widget(Widget.new("First Widget"))
 
-:javascript
-  $(document).ready(function(){
-    $("[title]").tooltip({predelay: "500"})
-  })
-
 - Database.widgets.each_with_index do |widget, w_index|
-  %div{ :style => "float:left;clear:both;margin-top:5px;padding:15px;background:#eee;" }
-    %div{ :style => "float:right;margin:-10px;" }
-      %a{ :href => "/delete?type=widget&index=#{w_index}", :style => "color:red;text-decoration:none;"}
-        == X
-    %h2{ :style => "margin-top:0;" }= widget.title
-    %form{:action => "/add"}
+  .widget
+    %div{ :style => "float:right;margin: -9px -3px 0 0;" }
+      %a{ :href => "javascript:void(0)", :onclick => "$('.edit').toggle()"}
+        %small
+          == edit
+    %h2{ :style => "float:left;margin-top:0;" }= widget.title
+    %a{ :href => "/delete?type=widget&index=#{w_index}", :style => "float:left;margin-top:8px;margin-left:10px;color:red;", :class => :edit }
+      %small
+        == delete section
+    %div{ :style => "float:left;clear:both;"}
+      - widget.bookmarkers.each_with_index do |bookmark, b_index|
+        = "#{b_index+1}) <a href='http://#{bookmark.url}' target='_blank' title='#{bookmark.note}'>#{bookmark.title}</a> - <small>#{bookmark.note}</small> <small class='edit'><a href='/delete?type=bookmarker&w_index=#{w_index}&b_index=#{b_index}' style='color:red;'>delete</a></small><br />"
+    %a{ :href => "javascript:void(0)", :onclick => "$('.add_bookmarker').toggle()", :style => "float:left;clear:both;margin-top:15px;"}
+      %small== add url
+    %form{:action => "/add", :class => :add_bookmarker, :style => "display:none;float:left;clear:both;margin-top:15px;" }
       %input{:type => "hidden", :name => "type", :value => "bookmarker"}
       %input{:type => "hidden", :name => "index", :value => "#{w_index}"}
       %input{:type => "text", :name => "url", :placeholder => "example.com"}
@@ -27,6 +25,13 @@
       %input{:type => "text", :name => "note", :placeholder => "note"}
       %br
       %input{:type => "submit", :value => "add url"}
-    %br  
-      - widget.bookmarkers.each_with_index do |bookmark, b_index|
-        = "#{b_index+1}) <a href='http://#{bookmark.url}' target='_blank' title='#{bookmark.note}'>#{bookmark.title}</a> <small><a href='/delete?type=bookmarker&w_index=#{w_index}&b_index=#{b_index}'>x</a></small><br />"
+  
+
+
+.add_widget
+  %a{ :href => "javascript:void(0)", :onclick => "$('#widget_form').toggle()"}
+    == add section
+  %form{:action => "/add", :id => :widget_form, :style => "display:none;margin-top:15px;"}
+    %input{:type => "hidden", :name => "type", :value => "widget"}
+    %input{:type => "text", :name => "title", :placeholder => "Title..."}
+    %input{:type => "submit", :value => "add section"}

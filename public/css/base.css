@@ -1,9 +1,65 @@
 body, html {
   margin: 0;
   padding: 0;
+  height: 100%;
+  background: url('/images/body_bg.jpg');
+  font-family: Helvetica Neue, sans-serif;
+}
+
+a, a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #999;
+  text-decoration: underline;
 }
 
 #wrap {
   width: 800px;
   margin: 0 auto;
+}
+
+.weather {
+  float: left;
+  clear: both;
+  width:100%;
+  margin-top:25px;
+  padding: 15px;
+  color: #eee;
+  text-shadow: 1px 1px black;
+  background: transparent url('/images/weather_bg.jpg');
+  box-shadow: 1px 1px 3px #555, -1px -1px #222;
+  border-radius:6px;
+}
+
+.widget {
+  float: left;
+  clear: both;
+  width: 100%;
+  margin-top: 25px;
+  padding: 15px;
+  color: #eee;
+  text-shadow: 1px 1px black;
+  background: transparent url('/images/widget_bg.jpg');
+  box-shadow: -1px -1px 3px #555, 1px 1px #222;
+  border-radius:6px;
+}
+
+.add_widget {
+  float: left;
+  clear: both;
+  margin-top: 25px;
+  padding: 15px;
+  color: #eee;
+  font-size: 12px;
+  text-shadow: 1px 1px black;
+  background: transparent url('/images/widget_bg.jpg');
+  box-shadow: -1px -1px 3px #555, 1px 1px #222;
+  border-radius:6px;
+}
+
+.edit {
+  display: none;
 }

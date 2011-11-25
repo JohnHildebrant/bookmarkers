@@ -1,6 +1,9 @@
 --- 
 - !ruby/object:Widget 
-  bookmarkers: []
-
+  bookmarkers: 
+  - !ruby/object:Bookmarker 
+    note: search engine
+    title: Google
+    url: google.com
   name_id: Bookmarks
   title: Bookmarks
