@@ -44,3 +44,11 @@ get '/add' do
   
   redirect '/'
 end
+
+get '/city' do
+  if params[:city]
+    Database.change_city(params[:city])
+  end
+  
+  redirect '/'
+end

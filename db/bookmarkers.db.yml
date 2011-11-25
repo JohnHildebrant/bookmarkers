@@ -1,0 +1,6 @@
+--- 
+- !ruby/object:Widget 
+  bookmarkers: []
+
+  name_id: Bookmarks
+  title: Bookmarks

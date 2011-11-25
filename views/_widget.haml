@@ -11,7 +11,7 @@
     $("[title]").tooltip({predelay: "500"})
   })
 
-- Database.open.each_with_index do |widget, w_index|
+- Database.widgets.each_with_index do |widget, w_index|
   %div{ :style => "float:left;clear:both;margin-top:5px;padding:15px;background:#eee;" }
     %div{ :style => "float:right;margin:-10px;" }
       %a{ :href => "/delete?type=widget&index=#{w_index}", :style => "color:red;text-decoration:none;"}

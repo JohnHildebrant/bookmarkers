@@ -1,44 +1,60 @@
-- weather = Weather.new("Seattle")
+- weather = Weather.new(Database.city)
 
 %div{ :style => "display:none;float:left;clear:both;width:100%;margin-top:25px;background:red;color:white;padding:15px;border-radius:6px;", :id => "weather-big"}    
   %div{ :style => "float:right;margin: -9px -3px 0 0;" }
     %a{ :href => "javascript:void(0)", :onclick => "$('#weather-big, #weather-small').toggle()", :style => "color:white;text-decoration:none;"}
       %small== smaller
-  %h2{ :style => "float:left;margin-top:0;margin-bottom:0;" }== Seattle Weather
+    %small= "|"
+    %a{ :href => "javascript:void(0)", :onclick => "$('#weather-big, #weather-small').toggle()", :style => "color:white;text-decoration:none;"}
+      %small== edit
+  %h2{ :style => "float:left;margin-top:0;margin-bottom:0;" }
+    = "#{Database.city} Weather"
   - if weather.connected?
     %div{ :style => "float:left;clear:left;margin-left:180px;font-size:60px" }
       = "#{weather.now.temperature}&deg;"
     %div{ :style => "float:left;margin-top:-30px;margin-left:50px;" }
-      %img{ :src => "/images/big/#{weather.now.icon}.png", :alt => "#{weather.now.icon}"}
+      %img{ :src => "/images/big/#{weather.now.icon}.png", :style => "width:128px;height:128px;", :alt => "#{weather.now.icon}"}
     %div{ :style => "float:left;margin-left:50px;font-size:30px;" }
       = "L: #{weather.today.low}"
       %br
       = "H: #{weather.today.high}"
-    %div{ :style => "float:left;clear:both;" }  
+    %div{ :style => "float:left;clear:both;font-size:14px;" }  
       - weather.forecast.drop(0).each do |day|
-        %div{ :style => "float:left" }
-          %strong= day.date.strftime('%A')
-          %br
-          = "L: #{day.low}&deg;"
-          %br
-          = "H: #{day.high}&deg;"
-        %div{ :style => "float:left;margin-right:6px;" }
-          %img{ :src => "/images/small/#{day.icon}.png", :alt => '#{day.icon}' }    
+        %div{ :style => "float:left;margin-right:8px;" }
+          %div{ :style => "float:left" }
+            %strong= day.date.strftime('%A')
+            %br
+            = "L: #{day.low}&deg;"
+            %br
+            = "H: #{day.high}&deg;"
+          %div{ :style => "float:left;margin-top:-6px;" }
+            %img{ :src => "/images/small/#{day.icon}.png", :style => "width:64px;height:64px;", :alt => "#{day.icon}" }    
   - else
     = weather.forecast
+  %div{ :style => "float:left;margin-top:15px;"}
+    %form{:action => "/city"}
+      %input{:type => "text", :name => "city", :placeholder => "City"}
+      %br
+      %input{:type => "submit", :value => "change city"}    
+    
     
 %div{ :style => "float:left;height:20px;clear:both;width:100%;margin-top:25px;background:red;color:white;padding:15px;border-radius:6px;", :id => "weather-small"}
   %div{ :style => "float:right;margin: -9px -3px 0 0;" }
     %a{ :href => "javascript:void(0)", :onclick => "$('#weather-big, #weather-small').toggle()", :style => "color:white;text-decoration:none;"}
       %small== bigger
-  %h4{ :style => "float:left;margin-top:0;margin-bottom:0;" }== Seattle Weather
+  %h4{ :style => "float:left;margin-top:0;margin-bottom:0;" }
+    = "#{Database.city} Weather"
   - if weather.connected?
     %div{ :style => "float:left;margin-left:80px;font-size:18px" }
       = "#{weather.now.temperature}&deg;"
-    %div{ :style => "float:left;margin-top:-60px;margin-left:50px;" }
-      %img{ :src => "/images/big/#{weather.now.icon}.png", :alt => "#{weather.now.icon}"}
+    %div{ :style => "float:left;margin-top:-50px;margin-left:50px;" }
+      %img{ :src => "/images/big/#{weather.now.icon}.png", :style => "width:128px;height:128px;", :alt => "#{weather.now.icon}"}
     %div{ :style => "float:left;margin-top:-5px;margin-left:50px;font-size:12px;" }
       = "L: #{weather.today.low}"
       %br
       = "H: #{weather.today.high}"
+  - else
+    = weather.forecast
+    
+
   
