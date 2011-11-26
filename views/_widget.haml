@@ -15,8 +15,8 @@
         == x section
     %div{ :style => "float:left;clear:both;"}
       - widget.bookmarkers.each_with_index do |bookmark, b_index|
-        = "<small class='#{widget.name_id} edit'><a href='/delete?type=bookmarker&w_index=#{w_index}&b_index=#{b_index}' style='color:red;'>x</a></small> <a href='http://#{bookmark.url}' target='_blank' title='#{bookmark.note}'>#{bookmark.title}</a> <small>- #{bookmark.note}</small><br />"
-    %form{:action => "/add", :class => :add_bookmarker, :style => "display:none;float:right;" }
+        = "<small class='#{widget.name_id} edit'><a href='/delete?type=bookmarker&w_index=#{w_index}&b_index=#{b_index}' style='color:red;'>x</a></small> <a href='http://#{bookmark.url}' target='_blank' title='#{bookmark.note}'>#{bookmark.title}</a> <small>- <em>#{bookmark.note}</em></small><br />"
+    %form{:action => "/add", :class => :add_bookmarker, :style => "display:none;float:right;margin:-10px;" }
       %input{:type => "hidden", :name => "type", :value => "bookmarker"}
       %input{:type => "hidden", :name => "index", :value => "#{w_index}"}
       %input{:type => "text", :name => "url", :placeholder => "example.com"}
