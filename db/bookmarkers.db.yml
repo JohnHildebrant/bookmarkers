@@ -5,5 +5,13 @@
     note: daily newspaper
     title: New York Times
     url: nytimes.com
+  - !ruby/object:Bookmarker 
+    note: yahoo news
+    title: Yahoo News
+    url: news.yahoo.com
+  - !ruby/object:Bookmarker 
+    note: google news
+    title: Google News
+    url: news.google.com
   name_id: News
   title: News
