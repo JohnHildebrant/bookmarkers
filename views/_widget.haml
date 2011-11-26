@@ -1,14 +1,16 @@
 - widgets = Database.widgets
 
 - if params[:edit]
+  - name_id = widgets[params[:edit].to_i].name_id rescue nil
   :javascript
     $(document).ready(function(){
-      $('.edit-#{widgets[params[:edit].to_i].name_id}').show()
+      $('.edit-#{name_id}').show()
     })
 - if params[:url]
+  - name_id = widgets[params[:url].to_i].name_id rescue nil
   :javascript
     $(document).ready(function(){
-      $('.add-#{widgets[params[:url].to_i].name_id}').show()
+      $('.add-#{name_id}').show()
     })
 
 - #Database.add_widget(Widget.new("First Widget"))
