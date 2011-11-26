@@ -40,6 +40,7 @@ a:hover {
   width: 100%;
   margin-top: 25px;
   padding: 15px;
+  padding-top: 10px;
   color: #eee;
   text-shadow: 1px 1px black;
   background: transparent url('/images/widget_bg.jpg');

@@ -2,28 +2,25 @@
 
 - Database.widgets.each_with_index do |widget, w_index|
   .widget
-    %div{ :style => "float:right;margin: -9px -3px 0 0;" }
+    %div{ :style => "float:right;margin: -4px -3px 0 0;" }
       %a{ :href => "javascript:void(0)", :onclick => "$('.#{widget.name_id}').toggle()"}
         %small
           == edit
-    %h2{ :style => "float:left;margin-top:0;" }= widget.title
+    %h2{ :style => "float:left;margin-top:0;margin-bottom:6px;" }= widget.title
     %a{ :href => "/delete?type=widget&index=#{w_index}", :style => "float:left;margin-top:8px;margin-left:10px;color:red;", :class => "#{widget.name_id} edit" }
       %small
         == delete section
     %div{ :style => "float:left;clear:both;"}
       - widget.bookmarkers.each_with_index do |bookmark, b_index|
-        = "#{b_index+1}) <a href='http://#{bookmark.url}' target='_blank' title='#{bookmark.note}'>#{bookmark.title}</a> <small>- #{bookmark.note}</small> <small class='#{widget.name_id} edit'><a href='/delete?type=bookmarker&w_index=#{w_index}&b_index=#{b_index}' style='color:red;'>x</a></small><br />"
-    %a{ :href => "javascript:void(0)", :onclick => "$('.add_bookmarker').toggle()", :style => "float:left;clear:both;margin-top:15px;"}
+        = "<small class='#{widget.name_id} edit'><a href='/delete?type=bookmarker&w_index=#{w_index}&b_index=#{b_index}' style='color:red;'>x</a></small> <a href='http://#{bookmark.url}' target='_blank' title='#{bookmark.note}'>#{bookmark.title}</a> <small>- #{bookmark.note}</small><br />"
+    %a{ :href => "javascript:void(0)", :onclick => "$('.add_bookmarker').toggle()", :style => "float:right;clear:both;margin-top:-15px;"}
       %small== add url
-    %form{:action => "/add", :class => :add_bookmarker, :style => "display:none;float:left;clear:both;margin-top:15px;" }
+    %form{:action => "/add", :class => :add_bookmarker, :style => "display:none;float:right;clear:both;margin-top:15px;" }
       %input{:type => "hidden", :name => "type", :value => "bookmarker"}
       %input{:type => "hidden", :name => "index", :value => "#{w_index}"}
       %input{:type => "text", :name => "url", :placeholder => "example.com"}
-      %br
       %input{:type => "text", :name => "title", :placeholder => "title"}
-      %br
       %input{:type => "text", :name => "note", :placeholder => "note"}
-      %br
       %input{:type => "submit", :value => "add url"}
   
 
