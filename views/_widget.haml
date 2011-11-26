@@ -1,22 +1,42 @@
+- widgets = Database.widgets
+
+- if params[:edit]
+  :javascript
+    $(document).ready(function(){
+      $('.edit-#{widgets[params[:edit].to_i].name_id}').show()
+    })
+- if params[:url]
+  :javascript
+    $(document).ready(function(){
+      $('.add-#{widgets[params[:url].to_i].name_id}').show()
+    })
+
 - #Database.add_widget(Widget.new("First Widget"))
 
-- Database.widgets.each_with_index do |widget, w_index|
+- widgets.each_with_index do |widget, w_index|
   .widget
     %div{ :style => "float:right;margin: -4px -3px 0 0;" }
-      %a{ :href => "javascript:void(0)", :onclick => "$('.#{widget.name_id}').toggle()"}
+      %a{ :href => "javascript:void(0)", :onclick => "$('.edit-#{widget.name_id}').toggle()"}
         %small
           == x
       %small= " | "
-      %a{ :href => "javascript:void(0)", :onclick => "$('.add_bookmarker').toggle()" }
+      %a{ :href => "javascript:void(0)", :onclick => "$('.add-#{widget.name_id}').toggle()" }
         %small== +
     %h2{ :style => "float:left;margin-top:0;margin-bottom:6px;" }= widget.title
-    %a{ :href => "/delete?type=widget&index=#{w_index}", :style => "float:left;margin-top:8px;margin-left:10px;color:red;", :class => "#{widget.name_id} edit" }
+    %a{ :href => "/delete?type=widget&index=#{w_index}", :style => "float:left;margin-top:8px;margin-left:10px;", :class => "edit-#{widget.name_id} edit" }
       %small
-        == x section
+        == delete section
     %div{ :style => "float:left;clear:both;"}
-      - widget.bookmarkers.each_with_index do |bookmark, b_index|
-        = "<small class='#{widget.name_id} edit'><a href='/delete?type=bookmarker&w_index=#{w_index}&b_index=#{b_index}' style='color:red;'>x</a></small> <a href='http://#{bookmark.url}' target='_blank' title='#{bookmark.note}'>#{bookmark.title}</a> <small>- <em>#{bookmark.note}</em></small><br />"
-    %form{:action => "/add", :class => :add_bookmarker, :style => "display:none;float:right;margin:-10px;" }
+      %ul
+        - widget.bookmarkers.compact.each_with_index do |bookmark, b_index|
+          %li
+            = "<a href='/delete?type=bookmarker&w_index=#{w_index}&b_index=#{b_index}' class='edit-#{widget.name_id} edit'><small>x</small></a> <a href='http://#{bookmark.url}' target='_blank' title='#{bookmark.note}'>#{bookmark.title}</a>"
+            - if bookmark.note and bookmark.note != ""
+              = "<small>- <em>#{bookmark.note}</em></small>"
+            - unless ( b_index == 0 )
+              = "<a href='/move?w_index=#{w_index}&b_index=#{b_index}' class='edit-#{widget.name_id} edit'>&uarr;</a><br />"
+            
+    %form{:action => "/add", :class => "add-#{widget.name_id}", :style => "display:none;float:right;margin:-10px;" }
       %input{:type => "hidden", :name => "type", :value => "bookmarker"}
       %input{:type => "hidden", :name => "index", :value => "#{w_index}"}
       %input{:type => "text", :name => "url", :placeholder => "example.com"}

@@ -6,6 +6,12 @@ body, html {
   font-family: Helvetica Neue, sans-serif;
 }
 
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
 a, a:visited {
   color: white;
   text-decoration: none;
@@ -26,6 +32,7 @@ a:hover {
   clear: both;
   width:100%;
   margin-top:25px;
+  margin-bottom: 5px;
   padding: 15px;
   color: #eee;
   text-shadow: 1px 1px black;
@@ -38,9 +45,8 @@ a:hover {
   float: left;
   clear: both;
   width: 100%;
-  margin-top: 25px;
-  padding: 15px;
-  padding-top: 10px;
+  margin-top: 15px;
+  padding: 5px 15px 10px 15px;
   color: #eee;
   text-shadow: 1px 1px black;
   background: transparent url('/images/widget_bg.jpg');
@@ -51,7 +57,7 @@ a:hover {
 .add_widget {
   float: left;
   clear: both;
-  margin-top: 25px;
+  margin-top: 15px;
   padding: 15px;
   color: #eee;
   font-size: 12px;
@@ -63,4 +69,8 @@ a:hover {
 
 .edit {
   display: none;
+}
+
+a.edit, a:visited.edit {
+    color: red;
 }
