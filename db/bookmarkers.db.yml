@@ -2,8 +2,8 @@
 - !ruby/object:Widget 
   bookmarkers: 
   - !ruby/object:Bookmarker 
-    note: search engine
-    title: Google
-    url: google.com
-  name_id: Bookmarks
-  title: Bookmarks
+    note: daily newspaper
+    title: New York Times
+    url: nytimes.com
+  name_id: News
+  title: News

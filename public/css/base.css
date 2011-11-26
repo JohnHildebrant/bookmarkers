@@ -43,7 +43,7 @@ a:hover {
   color: #eee;
   text-shadow: 1px 1px black;
   background: transparent url('/images/widget_bg.jpg');
-  box-shadow: -1px -1px 3px #555, 1px 1px #222;
+  box-shadow: 2px 3px 4px #111;
   border-radius:6px;
 }
 
@@ -56,7 +56,7 @@ a:hover {
   font-size: 12px;
   text-shadow: 1px 1px black;
   background: transparent url('/images/widget_bg.jpg');
-  box-shadow: -1px -1px 3px #555, 1px 1px #222;
+  box-shadow: 2px 3px 4px #111;
   border-radius:6px;
 }
 
