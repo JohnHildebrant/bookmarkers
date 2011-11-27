@@ -46,7 +46,7 @@ get '/add' do
 end
 
 get '/move' do 
-  Database.move_bookmarker(params[:w_index], params[:b_index])
+  Database.move_bookmarker(params[:dir], params[:w_index], params[:b_index])
   redirect '/?edit='+params[:w_index].to_s
 end
 

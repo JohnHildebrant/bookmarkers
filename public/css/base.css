@@ -25,12 +25,13 @@ a:hover {
 #wrap {
   width: 800px;
   margin: 0 auto;
+  
+  #height: 900px;
+  #border: 1px solid red;
 }
 
 .weather {
-  float: left;
-  clear: both;
-  width:100%;
+  float: right;
   margin-top:25px;
   margin-bottom: 5px;
   padding: 15px;
@@ -38,13 +39,45 @@ a:hover {
   text-shadow: 1px 1px black;
   background: transparent url('/images/weather_bg.jpg');
   box-shadow: 1px 1px 3px #555, -1px -1px #222;
-  border-radius:6px;
+  border-radius: 6px;
+}
+
+#weather-small {
+  width: 600px;
+}
+
+#weather-big {
+  width: 768px;
+}
+
+#date {
+  float: left;
+  width: 130px;
+  height: 44px;
+  margin-top:25px;
+  margin-bottom: 5px;
+  padding: 3px 10px 3px 10px;
+  color: #eee;
+  text-shadow: 1px 1px black;
+  background: transparent url('/images/weather_bg.jpg');
+  box-shadow: 1px 1px 3px #555, -1px -1px #222;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.time {
+  margin-top: 3px;
+  font-size: 18px;
+}
+
+.date {
+  font-size: 11px;
 }
 
 .widget {
   float: left;
   clear: both;
-  width: 100%;
+  width: 768px;
   margin-top: 15px;
   padding: 5px 15px 10px 15px;
   color: #eee;

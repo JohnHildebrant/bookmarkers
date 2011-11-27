@@ -47,11 +47,12 @@ class Database
     self.write(WEATHER_FILE, city)
   end
   
-  def self.move_bookmarker(w_index, b_index)
+  def self.move_bookmarker(direction, w_index, b_index)
     all_widgets = self.open(BOOKMARKERS_FILE)
     bookmarker  = all_widgets[w_index.to_i].bookmarkers[b_index.to_i]
     all_widgets[w_index.to_i].bookmarkers.delete_at(b_index.to_i)
-    all_widgets[w_index.to_i].bookmarkers.insert( (b_index.to_i-1), bookmarker)
+    
+    all_widgets[w_index.to_i].bookmarkers.insert( (b_index.to_i + direction.to_i), bookmarker)
     self.write(BOOKMARKERS_FILE, all_widgets)
   end
   

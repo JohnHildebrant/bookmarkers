@@ -36,7 +36,9 @@
             - if bookmark.note and bookmark.note != ""
               = "<small>- <em>#{bookmark.note}</em></small>"
             - unless ( b_index == 0 )
-              = "<a href='/move?w_index=#{w_index}&b_index=#{b_index}' class='edit-#{widget.name_id} edit'>&uarr;</a><br />"
+              = "<a href='/move?dir=-1&w_index=#{w_index}&b_index=#{b_index}' class='edit-#{widget.name_id} edit'>&uarr;</a>"
+            - unless ( b_index == widget.bookmarkers.compact.length-1 )
+              = "<a href='/move?dir=1&w_index=#{w_index}&b_index=#{b_index}' class='edit-#{widget.name_id} edit'>&darr;</a>"
             
     %form{:action => "/add", :class => "add-#{widget.name_id}", :style => "display:none;float:right;margin:-10px;" }
       %input{:type => "hidden", :name => "type", :value => "bookmarker"}
