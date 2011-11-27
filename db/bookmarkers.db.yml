@@ -2,16 +2,36 @@
 - !ruby/object:Widget 
   bookmarkers: 
   - !ruby/object:Bookmarker 
-    note: google news
-    title: Google News
-    url: news.google.com
-  - !ruby/object:Bookmarker 
-    note: ""
+    note: National and International news
     title: New York Times
     url: nytimes.com
   - !ruby/object:Bookmarker 
-    note: yahoo news
-    title: Yahoo News
-    url: news.yahoo.com
-  name_id: New
-  title: New
+    note: progressive news
+    title: Common Dreams
+    url: commondreams.org
+  - !ruby/object:Bookmarker 
+    note: culture blog and news
+    title: BoingBoing
+    url: boingboing.net
+  name_id: News
+  title: News
+- !ruby/object:Widget 
+  bookmarkers: 
+  - !ruby/object:Bookmarker 
+    note: ""
+    title: Git Hub
+    url: github.com
+  - !ruby/object:Bookmarker 
+    note: online ruby practice
+    title: Koans
+    url: koans.heroku.com
+  - !ruby/object:Bookmarker 
+    note: ""
+    title: Heroku
+    url: heroku.com
+  - !ruby/object:Bookmarker 
+    note: chat program used for class
+    title: Hip Chat
+    url: hipchat.com
+  name_id: RubyClass
+  title: Ruby Class

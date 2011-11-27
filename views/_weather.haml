@@ -4,20 +4,20 @@
   $(document).ready(function(){
     setInterval(function(){
       $('.date').text( $.PHPDate("l, F jS", new Date()) )
-    }, 1000)
+    }, 500)
     setInterval(function(){
       $('.time').text( $.PHPDate("h:i a", new Date()) )
-    }, 1000)
+    }, 500)
   })
   
 #date
   .time
   .date
 
-.weather{ :style => "height:20px;", :id => "weather-small"}
+#weather-today.weather
   %div{ :style => "float:right;margin: -9px -3px 0 0;" }
     - if weather.connected?
-      %a{ :href => "javascript:void(0)", :onclick => "$('#weather-big').toggle()", :style => "color:white;text-decoration:none;"}
+      %a{ :href => "javascript:void(0)", :onclick => "$('#weather-week').toggle()", :style => "color:white;text-decoration:none;"}
         %small== weekly
   %h4{ :style => "float:left;margin-top:-1px;margin-bottom:0;" }
     = "<a href='javascript:void(0)' onclick=\"$('#change-city, #connect').toggle()\">#{Database.city}</a> Weather"
@@ -29,16 +29,17 @@
     #connect
       %div{ :style => "float:left;margin-left:60px;font-size:18px" }
         = "#{weather.now.temperature}&deg;"
-      %div{ :style => "float:left;margin-top:-50px;margin-left:40px;" }
+      %div{ :style => "float:left;margin-top:-50px;margin-left:30px;" }
         %img{ :src => "/images/big/#{weather.now.icon}.png", :style => "position:relative;width:128px;height:128px;z-index:100;", :alt => "#{weather.now.icon}"}
-      %div{ :style => "float:left;margin-top:-5px;margin-left:40px;font-size:12px;" }
+      %div{ :style => "float:left;margin-top:-5px;margin-left:30px;font-size:12px;" }
         = "L: #{weather.today.low}"
         %br
         = "H: #{weather.today.high}"
   - else
-    %h4{ :style => "float:left;margin-top:0;margin-left:120px;color:#888;" }= weather.forecast
+    #connect
+      %h4{ :style => "float:left;margin-top:0;margin-left:120px;color:#888;" }= weather.forecast
 
-.weather{ :style => "display:none;", :id => "weather-big" }    
+#weather-week.weather   
   %div{ :style => "float:right;margin: -9px -3px 0 0;" }
   - if weather.connected?
     %div{ :style => "float:left;clear:both;font-size:14px;" }  
