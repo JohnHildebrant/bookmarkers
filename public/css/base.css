@@ -36,7 +36,7 @@ a:hover {
   padding: 15px;
   color: #eee;
   text-shadow: 1px 1px black;
-  background: transparent url('/images/weather_bg.jpg');
+  background: transparent url('/images/weather_bg.png');
   box-shadow: 1px 1px 3px #555, -1px -1px #222;
   border-radius: 6px;
 }
@@ -62,7 +62,7 @@ a:hover {
   padding: 3px 10px 3px 10px;
   color: #eee;
   text-shadow: 1px 1px black;
-  background: transparent url('/images/weather_bg.jpg');
+  background: transparent url('/images/weather_bg.png');
   box-shadow: 1px 1px 3px #555, -1px -1px #222;
   border-radius: 6px;
   text-align: center;
@@ -85,7 +85,7 @@ a:hover {
   padding: 5px 15px 10px 15px;
   color: #eee;
   text-shadow: 1px 1px black;
-  background: transparent url('/images/widget_bg.jpg');
+  background: transparent url('/images/widget_bg.png');
   box-shadow: 2px 3px 4px #111;
   border-radius:6px;
 }
@@ -98,7 +98,7 @@ a:hover {
   color: #eee;
   font-size: 12px;
   text-shadow: 1px 1px black;
-  background: transparent url('/images/widget_bg.jpg');
+  background: transparent url('/images/widget_bg.png');
   box-shadow: 2px 3px 4px #111;
   border-radius:6px;
 }
