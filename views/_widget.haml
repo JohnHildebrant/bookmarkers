@@ -18,17 +18,17 @@
 - widgets.each_with_index do |widget, w_index|
   .widget
     %div{ :style => "float:right;margin: -4px -3px 0 0;" }
-      %a{ :href => "javascript:void(0)", :onclick => "$('.edit-#{widget.name_id}').toggle()"}
+      %a{ :href => "javascript:void(0)", :onclick => "$('.edit-#{widget.name_id}').toggle()" }
         %small
           == x
       %small= " | "
       %a{ :href => "javascript:void(0)", :onclick => "$('.add-#{widget.name_id}').toggle()" }
         %small== +
-    %h2{ :style => "float:left;margin-top:0;margin-bottom:6px;font-style:italic;" }= widget.title
+    %h2{  }= widget.title
     %a{ :href => "/delete?type=widget&index=#{w_index}", :style => "float:left;margin-top:8px;margin-left:10px;", :class => "edit-#{widget.name_id} edit" }
       %small
         == delete section
-    %div{ :style => "float:left;clear:both;"}
+    %div{ :style => "float:left;clear:both;" }
       %ul
         - widget.bookmarkers.compact.each_with_index do |bookmark, b_index|
           %li
@@ -51,8 +51,6 @@
       %br
       %input{:type => "submit", :value => "add url"}
   
-
-
 .add_widget
   %a{ :href => "javascript:void(0)", :onclick => "$('#widget_form').toggle()"}
     == + section

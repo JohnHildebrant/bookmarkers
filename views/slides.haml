@@ -1,0 +1,53 @@
+- page = params[:p] ? params[:p].to_i : 1
+
+#slide
+  - case page
+  - when 1
+    %h2
+      == Gems
+    %ol
+      %li== Sinatra
+      %li== Haml 
+      %li
+        == Yaml
+        %small== - "database"
+      %li
+        %a{ :href => "https://github.com/attack/barometer", :target => "_blank" }
+          == Barometer
+        %small== - wundeground weather
+  - when 2
+    %h2
+      == Classes
+    %ol
+      %li
+        == Database
+        %small== - open/read/write YAML db file(s)
+      %li
+        == Bookmarker
+        %small== - hold bookmarks: url, title, note
+      %li
+        == Widget
+        %small== - 'section' for bookmarks: title, bookmarkers
+      %li
+        == Weather
+        %small== - wrapper for Barometer gem
+    
+    
+  - when 3
+    %h2
+      == To do...
+    %ol
+      %li== Clean up: HAML && HTML && CSS && etc
+      %li== Registration and Login
+      %li== Amazon S3
+      %li== Sass
+      
+      
+  .num
+    - if page == 1
+      = "<span style='color:#666'>&larr;</span>&nbsp;&nbsp;"
+    - else
+      = "<a href='/slides?p=#{page-1}'>&larr;</a>&nbsp;&nbsp;"
+    = page
+    - unless page == "last"
+      = "&nbsp;&nbsp;<a href='/slides?p=#{page+1}'>&rarr;</a>"

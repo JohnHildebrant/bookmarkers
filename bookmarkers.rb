@@ -6,7 +6,11 @@ require './lib/weather'
 require './lib/widget'
 
 get '/' do
-  haml :index, :layout => :template
+  haml :index, :layout => :layout
+end
+
+get '/slides' do
+  haml :slides, :layout => :layout
 end
 
 get '/delete' do
