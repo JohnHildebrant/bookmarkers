@@ -13,6 +13,15 @@ get '/slides' do
   haml :slides, :layout => :layout
 end
 
+get '/clear' do
+  haml :clear, :layout => :layout
+end
+
+get '/drop' do
+  Database.drop
+  redirect '/'
+end  
+
 get '/delete' do
   if params[:type]
     case params[:type]

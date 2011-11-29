@@ -24,7 +24,7 @@
       %small= " | "
       %a{ :href => "javascript:void(0)", :onclick => "$('.add-#{widget.name_id}').toggle()" }
         %small== +
-    %h2{  }= widget.title
+    %h2= widget.title
     %a{ :href => "/delete?type=widget&index=#{w_index}", :style => "float:left;margin-top:8px;margin-left:10px;", :class => "edit-#{widget.name_id} edit" }
       %small
         == delete section

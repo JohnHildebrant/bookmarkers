@@ -21,7 +21,7 @@
       %a{ :href => "javascript:void(0)", :onclick => "$('#weather-week').toggle()", :style => "color:white;text-decoration:none;"}
         %small== weekly
   %h4{ :style => "float:left;margin-top:-1px;margin-bottom:0;" }
-    = "<a href='javascript:void(0)' onclick=\"$('#change-city, #connect').toggle()\">#{Database.city}</a> Weather"
+    = "<a href='javascript:void(0)' onclick=\"$('#change-city, #connect').toggle()\">#{Database.city} Weather</a>"
   %div{ :style => "display:none;float:left;margin-top:-2px;margin-left:50px;", :id => 'change-city' }
     %form{:action => "/city", :id => :city_form}
       %input{:type => "text", :name => "city", :placeholder => "City...", :size => 30 }

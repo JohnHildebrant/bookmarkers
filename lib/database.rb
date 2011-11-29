@@ -11,6 +11,11 @@ class Database
     File.open(database, 'w') { |file| YAML.dump(array, file) }
   end
   
+  def self.drop
+    self.write(BOOKMARKERS_FILE, {})
+    self.write(WEATHER_FILE, {})
+  end
+  
   def self.add_widget(widget)
     all_widgets = self.open(BOOKMARKERS_FILE)
     all_widgets = all_widgets ? ( all_widgets.to_a + widget.to_a ) : widget.to_a
