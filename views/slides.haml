@@ -4,18 +4,42 @@
   - case page
   - when 1
     %h2
+      == Bookmarkers
+    %ol
+      %li
+        %a{ :href => "http:bookmarkers.heroku.com", :target => "_blank" }
+          == bookmarkers.heroku.com
+        %small== - non-writable
+      %li== or
+      %li
+        %a{ :href => "http:bookmarkers.calebkm.com:4567", :target => "_blank" }
+          == bookmarkers.calebkm.com:4567
+        %small== - writable!
+  - when 2
+    %h2
       == Gems
     %ol
-      %li== Sinatra
-      %li== Haml 
       %li
-        == Yaml
-        %small== - "database"
+        %a{ :href => "http://www.sinatrarb.com", :target => "_blank" }
+          == Sinatra
+      %li
+        %a{ :href => "http://rubygems.org/gems/haml", :target => "_blank" }
+          == Haml 
+      %li
+        %a{ :href => "http://www.yaml.org", :target => "_blank" }
+          == Yaml
+        %small== (built into 1.9.2) - "database"
       %li
         %a{ :href => "https://github.com/attack/barometer", :target => "_blank" }
           == Barometer
         %small== - wundeground weather
-  - when 2
+      %li
+        == (
+        %a{ :href => "http://rubygems.org/gems/thin", :target => "_blank" }
+          == Thin
+        %small== - at calebkm.com
+        == )
+  - when 3
     %h2
       == Classes
     %ol
@@ -33,9 +57,9 @@
         %small== - wrapper for Barometer gem
     
     
-  - when 3
+  - when 4
     %h2
-      == To do...
+      == To do
     %ol
       %li== Clean up: HAML && HTML && CSS && etc
       %li== Registration and Login
@@ -49,5 +73,7 @@
     - else
       = "<a href='/slides?p=#{page-1}'>&larr;</a>&nbsp;&nbsp;"
     = page
-    - unless page == "last"
+    - if page == 4
+      = "&nbsp;&nbsp;<span style='color:#666'>&rarr;</span>"
+    - else
       = "&nbsp;&nbsp;<a href='/slides?p=#{page+1}'>&rarr;</a>"
